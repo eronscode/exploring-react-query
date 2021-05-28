@@ -1,13 +1,19 @@
 import './App.css';
-import { useQuery } from 'react-query'
+
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import Home from './Home';
+
+const queryClient = new QueryClient()
 
 function App() {
-  console.log(useQuery)
+  
+  
   return (
-    <div className="App">
-      s
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Home/>
+     </QueryClientProvider>
   );
 }
+
 
 export default App;
