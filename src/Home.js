@@ -1,21 +1,10 @@
-import React, { useState } from 'react'
-import { useQuery } from 'react-query';
-import axios from 'axios';
+import React from 'react'
+import { useServerRequest } from './hooks/Hooks'
 
 
 function Home() {
     
-    const { isLoading, error, data, isFetching } = useQuery(
-        'repoData', 
-        () =>
-        axios.get('https://api.github.com/repos/tannerlinsley/react-query').then(res =>
-        res.data),
-        {
-            // refetchOnWindowFocus:false
-            // staleTime: 10000 // used to determine when a data should become stale
-            //cacheTime: 5000 //used to determine the time a data should be cached
-        }
-  )
+    const { isLoading, error, data, isFetching } = useServerRequest('https://api.github.com/repos/tannerlinsley/react-query');
 
   if (isLoading) return 'Loading...'
 
